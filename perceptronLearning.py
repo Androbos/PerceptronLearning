@@ -3,7 +3,6 @@
 import ast
 import re
 import numpy as np
-import sys
 
 # perceptron learning
 # starting weights 1
@@ -78,8 +77,13 @@ class perceptronLearning(object):
         self.trainingData.append(list(trainingData))
         self.targetValues.append(targetValue)
 
+<<<<<<< HEAD
     def runAlgorithm(self):
         weights = np.ones(self.num_features+1)
+=======
+    def genWeights(self):
+        weights = np.zeros(self.num_features+1)
+>>>>>>> d31f189b5283c89202796ab4f8b492060d064f4b
 
         trainingSets = [np.array([1]+x) for x in self.trainingData]
 
@@ -96,3 +100,13 @@ class perceptronLearning(object):
                     notConverge = True
 
         self.weights = list(weights)
+
+    # return 1 for accepted test case
+    # return -1 for rejected test case
+    # return 0 for undecidable
+    def predict(self, input_TestCase):
+        assert(len(input_TestCase) == self.num_features or self.num_features is not None), "wrong number of features"
+
+        new_testCase = np.array([1] + input_TestCase)
+
+        return sign(sum(self.weights * new_testCase))
