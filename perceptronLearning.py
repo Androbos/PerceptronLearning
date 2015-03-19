@@ -5,6 +5,8 @@ import re
 import numpy as np
 import sys
 
+# perceptron learning
+# starting weights 1
 
 def sign(number):
     if number > 0:
@@ -17,7 +19,7 @@ def sign(number):
 class perceptronLearning(object):
 
     Feature_Regex = "Features\s*=\s*(\d+)\s*;"
-    TrainingData_Regex = "TrainingData\s*=\s*(\[[01\s\,\[\]]+\])\s*;"
+    TrainingData_Regex = "TrainingData\s*=\s*(\[[\-01\s\,\[\]]+\])\s*;"
     TargetValue_Regex = "TargetValue\s*=\s*(\[[1\-\,\s]+\])\s*;"
 
     def __init__(self, num_feature=None):
@@ -26,7 +28,7 @@ class perceptronLearning(object):
         self.trainingData = None
         self.targetValues = None
         self.weights = None
-        self.learningRate = 0.2
+        self.learningRate = 0.7
 
     def load_training_data_from_file(self, fn_in):
         assert type(fn_in) is str, "fn_in must be strings: %r" % fn_in
@@ -77,7 +79,7 @@ class perceptronLearning(object):
         self.targetValues.append(targetValue)
 
     def runAlgorithm(self):
-        weights = np.zeros(self.num_features+1)
+        weights = np.ones(self.num_features+1)
 
         trainingSets = [np.array([1]+x) for x in self.trainingData]
 

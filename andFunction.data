@@ -1,0 +1,3 @@
+Features = 2;
+TrainingData = [[1, 1], [1, -1], [-1, 1], [-1, -1]];
+TargetValue = [1, -1, -1, -1];
