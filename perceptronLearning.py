@@ -77,13 +77,11 @@ class perceptronLearning(object):
         self.trainingData.append(list(trainingData))
         self.targetValues.append(targetValue)
 
-<<<<<<< HEAD
+    # def genWeights(self):
+    #     weights = np.zeros(self.num_features+1)
+
     def runAlgorithm(self):
         weights = np.ones(self.num_features+1)
-=======
-    def genWeights(self):
-        weights = np.zeros(self.num_features+1)
->>>>>>> d31f189b5283c89202796ab4f8b492060d064f4b
 
         trainingSets = [np.array([1]+x) for x in self.trainingData]
 
