@@ -18,7 +18,7 @@ def sign(number):
 class perceptronLearning(object):
 
     Feature_Regex = "Features\s*=\s*(\d+)\s*;"
-    TrainingData_Regex = "TrainingData\s*=\s*(\[[\-01\s\,\[\]]+\])\s*;"
+    TrainingData_Regex = "TrainingData\s*=\s*(\[[\-0-9\s\,\[\]]+\])\s*;"
     TargetValue_Regex = "TargetValue\s*=\s*(\[[1\-\,\s]+\])\s*;"
 
     def __init__(self, num_feature=None):
@@ -27,7 +27,7 @@ class perceptronLearning(object):
         self.trainingData = None
         self.targetValues = None
         self.weights = None
-        self.learningRate = 0.7
+        self.learningRate = 0.2
 
     def load_training_data_from_file(self, fn_in):
         assert type(fn_in) is str, "fn_in must be strings: %r" % fn_in
